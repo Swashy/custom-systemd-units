@@ -1,0 +1,15 @@
+[Unit]
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/network-configs/enforce-netorkconfig.sh
+# Debian
+ExecStart=/usr/bin/bash -c "/bin/cp /opt/network-configs/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0"
+# CentOS 7
+#ExecStart=/usr/bin/bash -c "/usr/bin/cp /opt/network-configs/ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth0"
+TimeoutSec=4
+
+[Install]
+WantedBy=multi-user.target

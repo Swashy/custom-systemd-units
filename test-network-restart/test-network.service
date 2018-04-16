@@ -1,0 +1,6 @@
+[Unit]
+Description=Runs /root/test-network.sh every hourish
+
+[Service]
+Type=oneshot
+ExecStart=/root/test-network.sh
